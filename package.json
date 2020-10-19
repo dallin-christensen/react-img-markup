@@ -1,6 +1,6 @@
 {
   "name": "react-img-markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for adding markdown to images with text and shapes",
   "main": "./dist/index.js",
   "scripts": {
