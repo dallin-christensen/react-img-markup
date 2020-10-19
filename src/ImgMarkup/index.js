@@ -7,7 +7,7 @@ import SelectionBox from './SelectionBox'
 import PropTypes from 'prop-types'
 
 
-const ImgMarkup = ({ children, imgSrc, imgStyles, onSave }) => {
+const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   const svgRef = useRef()
   const imgRef = useRef()
   const { x, y, pageX, pageY } = useSvgMousePosition(svgRef)
@@ -18,10 +18,10 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave }) => {
   const [shiftActive, setShiftActive] = useState(false)
 
   // active path stuff
-  const [activeColor, setActiveColor] = useState('red')
-  const [activeType, setActiveType] = useState('rect')
-  const [activeStrokeWidth, setActiveStrokeWidth] = useState(2)
-  const [activeFontSize, setActiveFontSize] = useState(20)
+  const [activeColor, setActiveColor] = useState(defaultValues?.color || 'red')
+  const [activeType, setActiveType] = useState(defaultValues?.type || 'rect')
+  const [activeStrokeWidth, setActiveStrokeWidth] = useState(defaultValues?.strokeWidth || 2)
+  const [activeFontSize, setActiveFontSize] = useState(defaultValues?.fontSize || 20)
 
 
   // this is just for text, other path dragging is inside of SelectionBox
@@ -524,8 +524,8 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave }) => {
             pathElement = (
               <>
                 <defs key={`${pathId}_arrowhead`}>
-                  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" fill='red'>
-                    <polygon points="0 0, 10 3.5, 0 7" fill='red' />
+                  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill={path.color} />
                   </marker>
                 </defs>
                 <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} markerEnd="url(#arrowhead)" />
@@ -535,7 +535,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave }) => {
 
           if (path?.type === 'text') {
             pathElement = (
-              <text x={path.x1} y={path.y1} fill={path.color} key={pathId} name={pathId} style={{ fontSize: path.fontSize, cursor: activePathId === pathId ? 'move' : 'text' }} onMouseDown={() => handleTextMouseDown(pathId)} onMouseUp={handleTextMouseUp}>{path.textContent}</text>
+              <text x={path.x1} y={path.y1} fill={path.color} key={pathId} name={pathId} style={{ fontSize: path.fontSize, fontFamily: 'arial', cursor: activePathId === pathId ? 'move' : 'text' }} onMouseDown={() => handleTextMouseDown(pathId)} onMouseUp={handleTextMouseUp}>{path.textContent}</text>
             )
           }
 
@@ -606,6 +606,7 @@ ImgMarkup.propTypes = {
   imgSrc: PropTypes.string,
   imgStyles: PropTypes.object,
   onSave: PropTypes.func,
+  defaultValues: PropTypes.object,
 }
 
 ImgMarkup.defaultProps = {
@@ -613,6 +614,7 @@ ImgMarkup.defaultProps = {
   imgSrc: '',
   imgStyles: {},
   onSave: () => {},
+  defaultValues: undefined,
 }
 
 export default ImgMarkup

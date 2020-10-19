@@ -13,9 +13,16 @@ class Example extends React.Component {
   componentDidMount() {}
 
   render() {
+    const markupDefaultValues = {
+      color: '#0af',
+      fontSize: 40,
+      strokeWidth: 4,
+      type: 'arrow'
+    }
+
     return (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }}>
-        <ImgMarkup imgSrc={src} imgStyles={{ height: 500 }} onSave={(uri) => console.log({ uri })}>
+        <ImgMarkup imgSrc={src} imgStyles={{ height: 500 }} onSave={(uri) => console.log({ uri })} defaultValues={markupDefaultValues}>
           {({
             activeColor,
             activeStrokeWidth,
@@ -44,7 +51,7 @@ class Example extends React.Component {
               <select name='color' value={activeColor} onChange={(e) => setActiveColor(e.target.value)}>
                 <option value='red'>red</option>
                 <option value='green'>green</option>
-                <option value='blue'>blue</option>
+                <option value='#0af'>blue</option>
                 <option value='orange'>orange</option>
               </select>
 
