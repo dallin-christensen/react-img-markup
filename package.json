@@ -1,7 +1,7 @@
 {
-  "name": "react-npm-package-boilerplate",
+  "name": "react-img-markdown",
   "version": "1.0.0",
-  "description": "Boilerplate to quickstart React component development",
+  "description": "Library for adding markdown to images with text and shapes",
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.babel.js",
@@ -32,9 +32,9 @@
     "jest-cli": "^23.6.0",
     "node-sass": "^4.7.2",
     "prop-types": "^15.6.0",
-    "react": "^16.14.0",
+    "react": "^16.8.0",
     "react-addons-test-utils": "^15.5.1",
-    "react-dom": "^16.14.0",
+    "react-dom": "^16.8.0",
     "react-hot-loader": "4.13.0",
     "react-test-renderer": "^16.0.0",
     "regenerator-runtime": "^0.12.1",
@@ -45,8 +45,8 @@
     "webpack-dev-server": "^3.1.4"
   },
   "peerDependencies": {
-    "react": ">= 16.3.0",
-    "react-dom": ">= 16.3.0"
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
@@ -55,5 +55,28 @@
     "core-js": "^3.6.5",
     "save-svg-as-png": "^1.4.17",
     "uuid": "^8.3.1"
-  }
+  },
+
+  "license": "MIT",
+  "repository": "https://github.com/dallin-christensen/react-img-markdown",
+  "homepage": "https://github.com/dallin-christensen/react-img-markdown",
+	"author": {
+		"name": "dallin christensen",
+		"email": "christensen.dallin@gmail.com",
+		"url": "https://github.com/dallin-christensen/react-img-markdown"
+	},
+	"keywords": [
+		"react",
+		"image",
+		"img",
+		"markdown",
+		"annotations",
+		"annotation",
+		"annotate",
+    "svg",
+    "add",
+		"shapes",
+    "shape",
+    "text"
+	]
 }
