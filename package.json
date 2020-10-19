@@ -10,7 +10,7 @@
     "coverage": "jest --coverage",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "prepublish": "npm run clean && npm run test && npm run build",
+    "prepublish": "npm run lint",
     "start": "webpack-dev-server --config examples/webpack.config.live.babel.js",
     "test": "npm run lint && npm run coverage"
   },
