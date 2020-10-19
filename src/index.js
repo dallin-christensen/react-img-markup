@@ -1,3 +1,3 @@
-import MyComponent from './MyComponent';
+import ImgMarkup from './ImgMarkup'
 
-export default MyComponent;
+export default ImgMarkup

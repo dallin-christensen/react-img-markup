@@ -20,6 +20,7 @@
   "rules": {
     "no-multiple-empty-lines": ["error", { "max": 2 }],
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "no-console": 1
+    "no-console": 1,
+    "semi": [2, "never"]
   }
 }

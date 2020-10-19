@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Example from './Example';
 import { AppContainer } from 'react-hot-loader';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 // AppContainer is a necessary wrapper component for HMR
 
 const render = (Component) => {

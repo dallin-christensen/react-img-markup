@@ -9,6 +9,7 @@
     "clean": "rm -rf dist coverage",
     "coverage": "jest --coverage",
     "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "prepublish": "npm run clean && npm run test && npm run build",
     "start": "webpack-dev-server --config examples/webpack.config.live.babel.js",
     "test": "npm run lint && npm run coverage"
@@ -31,10 +32,10 @@
     "jest-cli": "^23.6.0",
     "node-sass": "^4.7.2",
     "prop-types": "^15.6.0",
+    "react": "^16.14.0",
     "react-addons-test-utils": "^15.5.1",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-hot-loader": "next",
+    "react-dom": "^16.14.0",
+    "react-hot-loader": "4.13.0",
     "react-test-renderer": "^16.0.0",
     "regenerator-runtime": "^0.12.1",
     "sass-loader": "^7.0.1",
@@ -49,5 +50,10 @@
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "save-svg-as-png": "^1.4.17",
+    "uuid": "^8.3.1"
   }
 }
