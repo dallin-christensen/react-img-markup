@@ -1,7 +1,7 @@
 {
-  "name": "react-img-markdown",
+  "name": "react-img-markup",
   "version": "1.0.3",
-  "description": "Library for adding markdown to images using shapes and text",
+  "description": "Library for adding markup to images using shapes and text",
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.babel.js",
@@ -57,18 +57,18 @@
     "uuid": "^8.3.1"
   },
   "license": "MIT",
-  "repository": "https://github.com/dallin-christensen/react-img-markdown",
-  "homepage": "https://github.com/dallin-christensen/react-img-markdown",
+  "repository": "https://github.com/dallin-christensen/react-img-markup",
+  "homepage": "https://github.com/dallin-christensen/react-img-markup",
   "author": {
     "name": "dallin christensen",
     "email": "christensen.dallin@gmail.com",
-    "url": "https://github.com/dallin-christensen/react-img-markdown"
+    "url": "https://github.com/dallin-christensen/react-img-markup"
   },
   "keywords": [
     "react",
     "image",
     "img",
-    "markdown",
+    "markup",
     "annotations",
     "annotation",
     "annotate",
