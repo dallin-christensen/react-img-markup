@@ -42,10 +42,10 @@ Pass imgSrc prop to ImgMarkdown, use children as render-props:
 
 - `imgSrc` (string, required) - the src of the image you would like to add markdown to.
 - `imgStyles` (obj, optional) - styles passed to the image.
-- `onSave` (func, optional) - callback invoked when img saved. Will pass the uri as parameter: `(uri) => {}`
+- `onSave` (func, optional) - callback invoked when image is saved. Will pass the uri as parameter: `(uri) => {}`.
 - `defaultValues` (obj, optional) - pass options to give `ImgMarkdown` default state values when component mounts.
   - `type` (string) - value for markdown type. Includes: `rect`, `ellipsis`, `line`, `arrow`, and `text`.
-  - `color` (string) - value for markdown color. Can be any css-colorname, hex, or rgba.
+  - `color` (string) - value for markdown color. Can be any CSS color name, hex, or rgba.
   - `strokeWidth` (number) - value for markdown stroke width. Accepts any numerical value.
   - `fontSize` (number) - value for markdown font size. Accepts any numerical value.
 
@@ -64,7 +64,7 @@ Pass imgSrc prop to ImgMarkdown, use children as render-props:
 - `save` (func) - saves the image with the markdown. Will pass the uri to `onSave` when this function is called.
 - `activePathId` (string) - state. The id of `activePath`.
 
-### Contributions Appreciated!
+### Contributions appreciated!
 
 ```
 git clone
