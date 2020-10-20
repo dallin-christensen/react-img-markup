@@ -56,27 +56,26 @@
     "save-svg-as-png": "^1.4.17",
     "uuid": "^8.3.1"
   },
-
   "license": "MIT",
   "repository": "https://github.com/dallin-christensen/react-img-markdown",
   "homepage": "https://github.com/dallin-christensen/react-img-markdown",
-	"author": {
-		"name": "dallin christensen",
-		"email": "christensen.dallin@gmail.com",
-		"url": "https://github.com/dallin-christensen/react-img-markdown"
-	},
-	"keywords": [
-		"react",
-		"image",
-		"img",
-		"markdown",
-		"annotations",
-		"annotation",
-		"annotate",
+  "author": {
+    "name": "dallin christensen",
+    "email": "christensen.dallin@gmail.com",
+    "url": "https://github.com/dallin-christensen/react-img-markdown"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "img",
+    "markdown",
+    "annotations",
+    "annotation",
+    "annotate",
     "svg",
     "add",
-		"shapes",
+    "shapes",
     "shape",
     "text"
-	]
+  ]
 }
