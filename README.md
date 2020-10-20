@@ -13,14 +13,14 @@ npm i react-img-markdown
 ```
 
 &nbsp;
-Import ImgMarkdown component:
+Import `ImgMarkdown` component:
 
 ```
 import ImgMarkdown from 'react-img-markdown'
 ```
 
 &nbsp;
-Pass imgSrc prop to ImgMarkdown, use children as render-props:
+Pass `imgSrc` prop to `ImgMarkdown`, use children as render-props:
 
 ```
 <ImgMarkdown imgSrc='https://i.imgur.com/rbXZcVH.jpeg'>
