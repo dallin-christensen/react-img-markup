@@ -38,6 +38,7 @@ Pass `imgSrc` prop to `ImgMarkup`, use children as render-props:
 </ImgMarkup>
 ```
 
+&nbsp;
 ## ImgMarkup props
 
 - `imgSrc` (string, required) - the src of the image you would like to add markup to.
@@ -48,7 +49,9 @@ Pass `imgSrc` prop to `ImgMarkup`, use children as render-props:
   - `color` (string) - value for markup color. Can be any CSS color name, hex, or rgba.
   - `strokeWidth` (number) - value for markup stroke width. Accepts any numerical value.
   - `fontSize` (number) - value for markup font size. Accepts any numerical value.
+  - `text` (string) - value for default text shown to user when text element is first created.
 
+&nbsp;
 ## ImgMarkup render prop values
 
 - `activeType` (string) - state. The active markup type. Options are: `rect`, `ellipsis`, `line`, `arrow`, and `text`.
@@ -63,7 +66,9 @@ Pass `imgSrc` prop to `ImgMarkup`, use children as render-props:
 - `deletePath` (func) - pass a path id to delete desired path: `deletePath(id)`.
 - `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called.
 - `activePathId` (string) - state. The id of `activePath`.
+- `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
 
+&nbsp;
 ### Contributions appreciated!
 
 ```

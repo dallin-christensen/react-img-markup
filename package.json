@@ -1,6 +1,6 @@
 {
   "name": "react-img-markup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for adding markup to images using shapes and text",
   "main": "./dist/index.js",
   "scripts": {

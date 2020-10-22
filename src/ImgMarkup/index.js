@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   const svgRef = useRef()
   const imgRef = useRef()
+  const imgMarkupModifiers = useRef()
   const { x, y, pageX, pageY } = useSvgMousePosition(svgRef)
   
   const [activePathId, setActivePathId] = useState(null)
@@ -33,13 +34,9 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   })
   const [isDraggingText, setIsDragginText] = useState(false)
 
-
   const handleMouseDown = (e) => {
     const targetName = e.target.attributes?.name?.value
     const mouseDownOnPath = targetName && paths.hasOwnProperty(targetName)
-
-    // setActivePathId(null)
-    // setActivityState('create')
 
     if (activityState === 'create' && !mouseDownOnPath) {
       const id = v1()
@@ -62,7 +59,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
           pageX2: pageX,
           pageY2: pageY,
           id,
-          textContent: 'default text',
+          textContent: defaultValues.text || 'default text',
           fontSize: activeFontSize,
         }
       })
@@ -106,6 +103,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
       if (e.shiftKey) setShiftActive(true)
 
       if (!svgRef.current.contains(e.target)
+        && (imgMarkupModifiers?.current ? !imgMarkupModifiers.current.contains(e.target) : true)
         && e.target.id !== 'selection-box'
         && e.target.attributes?.class?.value !== 'resize-handle'
         && e.target.attributes?.class?.value !== 'annotations-textarea'
@@ -238,7 +236,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
       }
       setPaths(newPaths)
     }
-  }, [activeColor, activeStrokeWidth, activeFontSize, activePathId, activityState])
+  }, [activeColor, activeStrokeWidth, activeFontSize, activityState])
 
 
   // selected handles logic!
@@ -525,7 +523,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
               <>
                 <defs key={`${pathId}_arrowhead`}>
                   <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill={path.color} />
+                    <polygon points="0 0, 10 3.5, 0 7" fill={path.color} x={path.x1} />
                   </marker>
                 </defs>
                 <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} markerEnd="url(#arrowhead)" />
@@ -560,6 +558,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
           save,
           deletePath,
           activePathId,
+          imgMarkupModifiers,
         })
       }
       {

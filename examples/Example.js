@@ -17,7 +17,8 @@ class Example extends React.Component {
       color: '#0af',
       fontSize: 40,
       strokeWidth: 4,
-      type: 'arrow'
+      type: 'arrow',
+      text: 'insert text!',
     }
 
     return (
@@ -35,9 +36,10 @@ class Example extends React.Component {
             undo,
             save,
             deletePath,
-            activePathId
+            activePathId,
+            imgMarkupModifiers
           }) => (
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 10 }} ref={imgMarkupModifiers} >
               <label htmlFor="type">Type:</label>
               <select name='type' value={activeType} onChange={(e) => setActiveType(e.target.value)}>
                 <option value='line'>line</option>
