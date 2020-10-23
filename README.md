@@ -20,7 +20,7 @@ import ImgMarkup from 'react-img-markup'
 ```
 
 &nbsp;
-Pass `imgSrc` prop to `ImgMarkup`, use children as render-props:
+Pass `imgSrc` prop to `ImgMarkup`, use children with render prop structure:
 
 ```
 <ImgMarkup imgSrc='https://i.imgur.com/rbXZcVH.jpeg'>
