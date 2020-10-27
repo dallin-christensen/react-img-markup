@@ -64,7 +64,7 @@ Pass `imgSrc` prop to `ImgMarkup`, use children with render prop structure:
 - `setActiveFontSize` (func) - sets state. Will set `activeFontSize` state. Accepts number values.
 - `undo` (func) - will undo the last markup element the user created.
 - `deletePath` (func) - pass a path id to delete desired path: `deletePath(id)`.
-- `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called.
+- `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called. Will also return uri if asynchronously await the call.
 - `activePathId` (string) - state. The id of `activePath`.
 - `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
 
