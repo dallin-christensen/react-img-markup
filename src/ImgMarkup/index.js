@@ -208,7 +208,6 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   const save = async () => {
     const uri = await svgAsDataUri(document.querySelector('#svg-board'))
     onSave(uri)
-    return { uri }
   }
 
   const handleEditText = (e) => {
