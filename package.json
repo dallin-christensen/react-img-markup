@@ -1,6 +1,6 @@
 {
   "name": "react-img-markup",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Library for adding markup to images using shapes and text",
   "main": "./dist/index.js",
   "scripts": {
@@ -32,9 +32,9 @@
     "jest-cli": "^23.6.0",
     "node-sass": "^4.7.2",
     "prop-types": "^15.6.0",
-    "react": "^16.8.0",
+    "react": "^17.0.1",
     "react-addons-test-utils": "^15.5.1",
-    "react-dom": "^16.8.0",
+    "react-dom": "^17.0.1",
     "react-hot-loader": "4.13.0",
     "react-test-renderer": "^16.0.0",
     "regenerator-runtime": "^0.12.1",

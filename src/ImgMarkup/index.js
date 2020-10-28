@@ -59,7 +59,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
           pageX2: pageX,
           pageY2: pageY,
           id,
-          textContent: defaultValues.text || 'default text',
+          textContent: defaultValues?.text || 'default text',
           fontSize: activeFontSize,
         }
       })
@@ -208,6 +208,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   const save = async () => {
     const uri = await svgAsDataUri(document.querySelector('#svg-board'))
     onSave(uri)
+    return { uri }
   }
 
   const handleEditText = (e) => {
@@ -566,7 +567,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
           ? (
             <textarea
               className='annotations-textarea'
-              style={{ position: 'absolute', left: paths[activePathId].pageX1, top: paths[activePathId].pageY1 + 20 }}
+              style={{ position: 'fixed', left: paths[activePathId].pageX1, top: paths[activePathId].pageY1 + 20 }}
               value={paths[activePathId].textContent}
               onChange={handleEditText}
             />

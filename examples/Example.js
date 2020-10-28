@@ -22,7 +22,7 @@ class Example extends React.Component {
     }
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh', position: 'relative' }}>
         <ImgMarkup imgSrc={src} imgStyles={{ height: 500 }} onSave={(uri) => console.log({ uri })} defaultValues={markupDefaultValues}>
           {({
             activeColor,

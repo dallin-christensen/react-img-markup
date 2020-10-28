@@ -134,7 +134,7 @@ const SelectionBox = ({
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       style={{
-        position: 'absolute',
+        position: 'fixed',
         left: leftX,
         top: topY,
         width: rightX - leftX,
@@ -178,7 +178,8 @@ const SelectionBox = ({
                       ...handleStyles,
                       top: activePath.pageY1 - 6,
                       left: activePath.pageX1 - 6,
-                      cursor: 'move'
+                      cursor: 'move',
+                      position: 'fixed'
                     }}
                   />
                   <div
@@ -190,7 +191,8 @@ const SelectionBox = ({
                       ...handleStyles,
                       top: activePath.pageY2 - 6,
                       left: activePath.pageX2 - 6,
-                      cursor: 'move'
+                      cursor: 'move',
+                      position: 'fixed'
                     }}
                   />
                 </>
