@@ -7,7 +7,7 @@ import SelectionBox from './SelectionBox'
 import PropTypes from 'prop-types'
 
 
-const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoderType }) => {
+const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoderType, encoderOptions }) => {
   const svgRef = useRef()
   const imgRef = useRef()
   const imgMarkupModifiers = useRef()
@@ -210,7 +210,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
       ? 'image/png'
       : 'image/jpeg'
 
-    const uri = await svgAsPngUri(document.querySelector('#svg-board'), { encoderType: uriEncoderType })
+    const uri = await svgAsPngUri(document.querySelector('#svg-board'), { encoderType: uriEncoderType, encoderOptions })
     onSave(uri)
 
     return { uri }
@@ -613,6 +613,7 @@ ImgMarkup.propTypes = {
   onSave: PropTypes.func,
   defaultValues: PropTypes.object,
   encoderType: PropTypes.string,
+  encoderOptions: PropTypes.number,
 }
 
 ImgMarkup.defaultProps = {
@@ -622,6 +623,7 @@ ImgMarkup.defaultProps = {
   onSave: () => {},
   defaultValues: undefined,
   encoderType: 'jpg',
+  encoderOptions: 0.8,
 }
 
 export default ImgMarkup
