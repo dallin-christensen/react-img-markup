@@ -1,13 +1,13 @@
 
 import React, { useEffect, useRef, useState } from 'react'
-import { svgAsDataUri } from 'save-svg-as-png'
+import { svgAsPngUri } from 'save-svg-as-png'
 import { v1 } from 'uuid'
 import useSvgMousePosition from '../hooks/useSvgMousePosition'
 import SelectionBox from './SelectionBox'
 import PropTypes from 'prop-types'
 
 
-const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
+const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoderType }) => {
   const svgRef = useRef()
   const imgRef = useRef()
   const imgMarkupModifiers = useRef()
@@ -206,8 +206,13 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues }) => {
   }
 
   const save = async () => {
-    const uri = await svgAsDataUri(document.querySelector('#svg-board'))
+    const uriEncoderType = encoderType === 'png'
+      ? 'image/png'
+      : 'image/jpeg'
+
+    const uri = await svgAsPngUri(document.querySelector('#svg-board'), { encoderType: uriEncoderType })
     onSave(uri)
+
     return { uri }
   }
 
@@ -607,6 +612,7 @@ ImgMarkup.propTypes = {
   imgStyles: PropTypes.object,
   onSave: PropTypes.func,
   defaultValues: PropTypes.object,
+  encoderType: PropTypes.string,
 }
 
 ImgMarkup.defaultProps = {
@@ -615,6 +621,7 @@ ImgMarkup.defaultProps = {
   imgStyles: {},
   onSave: () => {},
   defaultValues: undefined,
+  encoderType: 'jpg',
 }
 
 export default ImgMarkup

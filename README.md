@@ -44,6 +44,7 @@ Pass `imgSrc` prop to `ImgMarkup`, use children with render prop structure:
 - `imgSrc` (string, required) - the src of the image you would like to add markup to.
 - `imgStyles` (obj, optional) - styles passed to the image.
 - `onSave` (func, optional) - callback invoked when image is saved. Will pass the uri as parameter: `(uri) => {}`.
+- `encoderType` (string, optional) - determines the format the file will be saved as. default is `jpg` but also accepts `png`.
 - `defaultValues` (obj, optional) - pass options to give `ImgMarkup` default state values when component mounts.
   - `type` (string) - value for markup type. Includes: `rect`, `ellipsis`, `line`, `arrow`, and `text`.
   - `color` (string) - value for markup color. Can be any CSS color name, hex, or rgba.

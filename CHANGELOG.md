@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.8
+### Added
+- encoderType prop allows user to specify the file type on save, options for both jpg and png.
+
 ## 1.0.7
 ### Added
 - save function will now asynchronously return an object with the uri as a property inside.
