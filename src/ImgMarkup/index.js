@@ -526,14 +526,12 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
 
           if (path.type === 'arrow') {
             pathElement = (
-              <>
-                <defs key={`${pathId}_arrowhead`}>
-                  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill={path.color} x={path.x1} />
-                  </marker>
-                </defs>
-                <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} markerEnd="url(#arrowhead)" />
-              </>
+              <React.Fragment key={`${pathId}_arrow`}>
+                <marker id={`${pathId}_arrowhead_marker`} markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill={path.color} x={path.x1} />
+                </marker>
+                <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} markerEnd={`url(#${pathId}_arrowhead_marker)`} />
+              </React.Fragment>
             )
           }
 

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.10
+### Fixed
+- Arrow heads will no longer be a different color from their body when user changes fill color.
+
 ## 1.0.9
 ### Added
 - encoderOptions prop allows a number between `0` and `1` indicating image quality on save. The default is `0.8`.
