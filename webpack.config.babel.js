@@ -30,16 +30,12 @@ export default () => ({
             }
           }
         ]
-      },
-      {
-        test: /\.(scss)$/,
-        loader: 'style-loader!css-loader!sass-loader'
       }
     ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx']
   },
 
   externals: {

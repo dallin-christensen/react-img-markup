@@ -36,7 +36,7 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
 
   const handleMouseDown = (e) => {
     const targetName = e.target.attributes?.name?.value
-    const mouseDownOnPath = targetName && paths.hasOwnProperty(targetName)
+    const mouseDownOnPath = targetName && Object.prototype.hasOwnProperty.call(paths, targetName)
 
     if (activityState === 'create' && !mouseDownOnPath) {
       const id = v1()
@@ -502,7 +502,9 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
             const height = Math.abs(path.y2 - path.y1)
     
             pathElement = (
-              <ellipse cx={`${avgX}`} cy={`${avgY}`} rx={width - (width/2)} ry={height - (height/2)} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              <React.Fragment key={pathId}>
+                <ellipse cx={`${avgX}`} cy={`${avgY}`} rx={width - (width/2)} ry={height - (height/2)} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              </React.Fragment>
             )
           }
 
@@ -514,13 +516,17 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
             const height = Math.abs(path.y2 - path.y1)
     
             pathElement = (
-              <rect x={left} y={top} width={width} height={height} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              <React.Fragment key={pathId}>
+                <rect x={left} y={top} width={width} height={height} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              </React.Fragment>
             )
           }
 
           if (path?.type === 'line') {
             pathElement = (
-              <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              <React.Fragment key={pathId}>
+                <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
+              </React.Fragment>
             )
           }
 
@@ -537,14 +543,16 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
 
           if (path?.type === 'text') {
             pathElement = (
-              <text x={path.x1} y={path.y1} fill={path.color} key={pathId} name={pathId} style={{ fontSize: path.fontSize, fontFamily: 'arial', cursor: activePathId === pathId ? 'move' : 'text' }} onMouseDown={() => handleTextMouseDown(pathId)} onMouseUp={handleTextMouseUp}>{path.textContent}</text>
+              <React.Fragment key={pathId}>
+                <text x={path.x1} y={path.y1} fill={path.color} key={pathId} name={pathId} style={{ fontSize: path.fontSize, fontFamily: 'arial', cursor: activePathId === pathId ? 'move' : 'text' }} onMouseDown={() => handleTextMouseDown(pathId)} onMouseUp={handleTextMouseUp}>{path.textContent}</text>
+              </React.Fragment>
             )
           }
 
           return (
-            <>
+            <React.Fragment key={pathId}>
               {pathElement}
-            </>
+            </React.Fragment>
           )
         })}
       </svg>

@@ -75,7 +75,7 @@ Pass `imgSrc` prop to `ImgMarkup`, use children with render prop structure:
 
 ```
 git clone
-npm i
+npm i --legacy-peer-deps
 npm run start
 ```
 
