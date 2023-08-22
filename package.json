@@ -38,6 +38,10 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0"
+  },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
