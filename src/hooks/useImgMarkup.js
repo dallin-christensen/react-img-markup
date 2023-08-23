@@ -1,13 +1,14 @@
-
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { svgAsPngUri } from 'save-svg-as-png'
 import { v1 } from 'uuid'
-import useSvgMousePosition from '../hooks/useSvgMousePosition'
-import SelectionBox from './SelectionBox'
-import PropTypes from 'prop-types'
+import useSvgMousePosition from './useSvgMousePosition'
 
-
-const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoderType, encoderOptions }) => {
+const useImgMarkup = ({
+  onSave = () => {},
+  defaultValues = {},
+  encoderType = "jpg",
+  encoderOptions = 0.8,
+}) => {
   const svgRef = useRef()
   const imgRef = useRef()
   const imgMarkupModifiers = useRef()
@@ -205,12 +206,14 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
     setPaths(newPaths)
   }
 
-  const save = async () => {
+  const save = async (e) => {
+    e.preventDefault()
+
     const uriEncoderType = encoderType === 'png'
       ? 'image/png'
       : 'image/jpeg'
 
-    const uri = await svgAsPngUri(document.querySelector('#svg-board'), { encoderType: uriEncoderType, encoderOptions })
+    const uri = await svgAsPngUri(svgRef?.current, { encoderType: uriEncoderType, encoderOptions })
     onSave(uri)
 
     return { uri }
@@ -473,163 +476,52 @@ const ImgMarkup = ({ children, imgSrc, imgStyles, onSave, defaultValues, encoder
     }
   }, [x, y, isDraggingText])
 
-  return (
-    <>
-      <svg
-        id='svg-board'
-        ref={svgRef}
-        style={{
-          display: 'flex',
-          height: imgRef?.current?.getBoundingClientRect?.()?.height,
-          width: imgRef?.current?.getBoundingClientRect?.()?.width,
-          cursor: activityState === 'create' ? 'crosshair' : 'auto'
-        }}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-      >
-        <image ref={imgRef} xlinkHref={imgSrc} style={{ ...imgStyles }} />
-        {Object.keys(paths).map((pathId) => {
-          const path = paths[pathId]
+  const bind = {  
+    svgRef,
+    imgRef,
+  
+    paths,
+    activityState,
+    activePathId,
+  
+    handleMouseDown,
+    handleMouseUp,
+    handleTextMouseDown,
+    handleTextMouseUp,
+    handleEditText,
+  
+  
+    x,
+    y,
+    adjustNW,
+    adjustNE,
+    adjustSE,
+    adjustSW,
+    adjustN,
+    adjustE,
+    adjustS,
+    adjustW,
+    adjustX1Y1,
+    adjustX2Y2,
+    moveSelection,
+  }
 
-          let pathElement
-
-
-          if (path?.type === 'ellipse') {
-            const avgX = (path.x2 + path.x1)/2
-            const avgY = (path.y2 + path.y1)/2
-    
-            const width = Math.abs(path.x2 - path.x1)
-            const height = Math.abs(path.y2 - path.y1)
-    
-            pathElement = (
-              <React.Fragment key={pathId}>
-                <ellipse cx={`${avgX}`} cy={`${avgY}`} rx={width - (width/2)} ry={height - (height/2)} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
-              </React.Fragment>
-            )
-          }
-
-          if (path?.type === 'rect') {
-            const left = path.x1 < path.x2 ? path.x1 : path.x2
-            const top = path.y1 < path.y2 ? path.y1 : path.y2
-    
-            const width = Math.abs(path.x2 - path.x1)
-            const height = Math.abs(path.y2 - path.y1)
-    
-            pathElement = (
-              <React.Fragment key={pathId}>
-                <rect x={left} y={top} width={width} height={height} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
-              </React.Fragment>
-            )
-          }
-
-          if (path?.type === 'line') {
-            pathElement = (
-              <React.Fragment key={pathId}>
-                <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} />
-              </React.Fragment>
-            )
-          }
-
-          if (path.type === 'arrow') {
-            pathElement = (
-              <React.Fragment key={`${pathId}_arrow`}>
-                <marker id={`${pathId}_arrowhead_marker`} markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                  <polygon points="0 0, 10 3.5, 0 7" fill={path.color} x={path.x1} />
-                </marker>
-                <line x1={path.x1} y1={path.y1} x2={path.x2} y2={path.y2} key={pathId} name={pathId} fill='transparent' stroke={path.color} strokeWidth={`${path.strokeWidth}px`} style={{ cursor: activityState === 'create' ? 'pointer' : 'auto' }} markerEnd={`url(#${pathId}_arrowhead_marker)`} />
-              </React.Fragment>
-            )
-          }
-
-          if (path?.type === 'text') {
-            pathElement = (
-              <React.Fragment key={pathId}>
-                <text x={path.x1} y={path.y1} fill={path.color} key={pathId} name={pathId} style={{ fontSize: path.fontSize, fontFamily: 'arial', cursor: activePathId === pathId ? 'move' : 'text' }} onMouseDown={() => handleTextMouseDown(pathId)} onMouseUp={handleTextMouseUp}>{path.textContent}</text>
-              </React.Fragment>
-            )
-          }
-
-          return (
-            <React.Fragment key={pathId}>
-              {pathElement}
-            </React.Fragment>
-          )
-        })}
-      </svg>
-      {
-        children?.({
-          activeColor,
-          activeStrokeWidth,
-          activeType,
-          activeFontSize,
-          setActiveColor,
-          setActiveStrokeWidth,
-          setActiveType,
-          setActiveFontSize,
-          undo,
-          save,
-          deletePath,
-          activePathId,
-          imgMarkupModifiers,
-        })
-      }
-      {
-        activityState === 'selected' && paths[activePathId]?.type === 'text'
-          ? (
-            <textarea
-              className='annotations-textarea'
-              style={{ position: 'fixed', left: paths[activePathId].pageX1, top: paths[activePathId].pageY1 + 20 }}
-              value={paths[activePathId].textContent}
-              onChange={handleEditText}
-            />
-          )
-          : null
-      }
-      {
-        activityState === 'selected'
-          ? (
-            <SelectionBox
-              activePath={paths[activePathId]}
-              x={x}
-              y={y}
-              adjustNW={adjustNW}
-              adjustNE={adjustNE}
-              adjustSE={adjustSE}
-              adjustSW={adjustSW}
-              adjustN={adjustN}
-              adjustE={adjustE}
-              adjustS={adjustS}
-              adjustW={adjustW}
-              adjustX1Y1={adjustX1Y1}
-              adjustX2Y2={adjustX2Y2}
-              move={moveSelection}
-              hideHandles={paths[activePathId]?.type === 'text'}
-            />
-          )
-          : null
-      }
-    </>
-  )
+  return {
+    bind,
+    activeColor,
+    activeStrokeWidth,
+    activeType,
+    activeFontSize,
+    setActiveColor,
+    setActiveStrokeWidth,
+    setActiveType,
+    setActiveFontSize,
+    undo,
+    save,
+    deletePath,
+    activePathId,
+    imgMarkupModifiers
+  }
 }
 
-ImgMarkup.propTypes = {
-  children: PropTypes.func,
-  imgSrc: PropTypes.string,
-  imgStyles: PropTypes.object,
-  onSave: PropTypes.func,
-  defaultValues: PropTypes.object,
-  encoderType: PropTypes.string,
-  encoderOptions: PropTypes.number,
-}
-
-ImgMarkup.defaultProps = {
-  children: () => {},
-  imgSrc: '',
-  imgStyles: {},
-  onSave: () => {},
-  defaultValues: undefined,
-  encoderType: 'jpg',
-  encoderOptions: 0.8,
-}
-
-export default ImgMarkup
+export default useImgMarkup

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import Example from './Example';
 import { AppContainer } from 'react-hot-loader';
