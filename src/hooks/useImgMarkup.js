@@ -5,6 +5,7 @@ import useSvgMousePosition from './useSvgMousePosition'
 
 const useImgMarkup = ({
   onSave = () => {},
+  onImgLoad = () => {},
   defaultValues = {},
   encoderType = "jpg",
   encoderOptions = 0.8,
@@ -479,6 +480,7 @@ const useImgMarkup = ({
   const bind = {  
     svgRef,
     imgRef,
+    onImgLoad,
   
     paths,
     activityState,
@@ -489,7 +491,6 @@ const useImgMarkup = ({
     handleTextMouseDown,
     handleTextMouseUp,
     handleEditText,
-  
   
     x,
     y,

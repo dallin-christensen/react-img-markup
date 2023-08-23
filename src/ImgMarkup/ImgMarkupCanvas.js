@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 function ImgMarkupCanvas({
   imgSrc,
   imgStyles,
+  onImgLoad,
 
   svgRef,
   imgRef,
@@ -42,12 +43,12 @@ function ImgMarkupCanvas({
           display: 'flex',
           height: imgRef?.current?.getBoundingClientRect?.()?.height,
           width: imgRef?.current?.getBoundingClientRect?.()?.width,
-          cursor: activityState === 'create' ? 'crosshair' : 'auto'
+          cursor: activityState === 'create' ? 'crosshair' : 'auto',
         }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
       >
-        <image ref={imgRef} xlinkHref={imgSrc} style={{ ...imgStyles }} />
+        <image ref={imgRef} xlinkHref={imgSrc} onLoad={onImgLoad} style={{ ...imgStyles }} />
         {Object.keys(paths).map((pathId) => {
           const path = paths[pathId]
 
@@ -154,6 +155,7 @@ function ImgMarkupCanvas({
 ImgMarkupCanvas.propTypes = {
   imgSrc: PropTypes.string,
   imgStyles: PropTypes.object,
+  onImgLoad: PropTypes.func,
 
   svgRef: PropTypes.oneOfType([
     PropTypes.func, 
@@ -193,6 +195,7 @@ ImgMarkupCanvas.propTypes = {
 ImgMarkupCanvas.defaultProps = {
   imgSrc: '',
   imgStyles: {},
+  onImgLoad: () => {},
   activePathId: null,
 }
 

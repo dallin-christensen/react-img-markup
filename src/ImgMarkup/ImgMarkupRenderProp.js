@@ -10,6 +10,7 @@ const ImgMarkupRenderProp = ({
   imgSrc,
   imgStyles,
   onSave,
+  onImgLoad,
   defaultValues,
   encoderType,
   encoderOptions,
@@ -31,6 +32,7 @@ const ImgMarkupRenderProp = ({
     imgMarkupModifiers
   } = useImgMarkup({
     onSave,
+    onImgLoad,
     defaultValues,
     encoderType,
     encoderOptions,
@@ -65,6 +67,7 @@ ImgMarkupRenderProp.propTypes = {
   imgSrc: PropTypes.string,
   imgStyles: PropTypes.object,
   onSave: PropTypes.func,
+  onImgLoad: PropTypes.func,
   defaultValues: PropTypes.object,
   encoderType: PropTypes.string,
   encoderOptions: PropTypes.number,
@@ -75,6 +78,7 @@ ImgMarkupRenderProp.defaultProps = {
   imgSrc: '',
   imgStyles: {},
   onSave: () => {},
+  onImgLoad: () => {},
   defaultValues: undefined,
   encoderType: 'jpg',
   encoderOptions: 0.8,

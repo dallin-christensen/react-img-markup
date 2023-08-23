@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ImgMarkupRenderProp } from '../src/index';
 
@@ -16,6 +16,8 @@ const CONTAINER_STYLES = {
 
 const RenderPropExample = () => {
 
+  const [loading, setLoading] = useState(true)
+
   const markupDefaultValues = {
     color: '#0af',
     fontSize: 40,
@@ -24,9 +26,17 @@ const RenderPropExample = () => {
     text: 'insert text!',
   }
 
+  const onSave = (uri) => console.log({ uri })
+
+  const onImgLoad = () => setLoading(false)
+
   return (
     <div style={CONTAINER_STYLES}>
-      <ImgMarkupRenderProp imgSrc={src} imgStyles={{ height: 400 }} onSave={(uri) => console.log({ uri })} defaultValues={markupDefaultValues}>
+      {
+        loading
+          && <p>loading...</p>
+      }
+      <ImgMarkupRenderProp imgSrc={src} imgStyles={{ height: 400 }} onSave={onSave} onImgLoad={onImgLoad} defaultValues={markupDefaultValues}>
         {({
           activeColor,
           activeStrokeWidth,

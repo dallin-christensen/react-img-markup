@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ImgMarkupCanvas, useImgMarkup } from '../src/index';
 
@@ -15,6 +15,8 @@ const CONTAINER_STYLES = {
 }
 
 const HookExample = () => {
+  const [loading, setLoading] = useState(true)
+
   const markupDefaultValues = {
     color: '#0af',
     fontSize: 40,
@@ -24,6 +26,8 @@ const HookExample = () => {
   }
 
   const onSave = (uri) => console.log({ uri })
+
+  const onImgLoad = () => setLoading(false)
 
   const {
     bind,
@@ -42,11 +46,16 @@ const HookExample = () => {
     imgMarkupModifiers
   } = useImgMarkup({
     onSave,
+    onImgLoad,
     defaultValues: markupDefaultValues,
   })
 
   return (
     <div style={CONTAINER_STYLES}>
+      {
+        loading
+          && <p>loading...</p>
+      }
       <ImgMarkupCanvas imgSrc={src} imgStyles={{ height: 400 }} {...bind} />
       <div style={{ marginTop: 10 }} ref={imgMarkupModifiers} >
         <label htmlFor="type">Type:</label>
