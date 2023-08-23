@@ -129,77 +129,77 @@ const SelectionBox = ({
 
   return (
     <>
-    <div
-      id='selection-box'
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      style={{
-        position: 'fixed',
-        left: leftX,
-        top: topY,
-        width: rightX - leftX,
-        height: bottomY - topY,
-        zIndex: 5,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'move',
-      }}
-    >
+      <div
+        id='selection-box'
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        style={{
+          position: 'fixed',
+          left: leftX,
+          top: topY,
+          width: rightX - leftX,
+          height: bottomY - topY,
+          zIndex: 5,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'move',
+        }}
+      >
+        {
+          !hideHandles && !isLineType
+            ? (
+              <>
+                <div id='annotation-nw' className='resize-handle' style={{ ...handleStyles, top: '-5px', left: '-5px', cursor: 'nwse-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+                <div id='annotation-n' className='resize-handle' style={{ ...handleStyles, top: '-5px', cursor: 'ns-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+                <div id='annotation-ne' className='resize-handle' style={{ ...handleStyles, top: '-5px', right: '-5px', cursor: 'nesw-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+        
+                <div id='annotation-w' className='resize-handle' style={{ ...handleStyles, left: '-5px', cursor: 'ew-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+                <div id='annotation-e' className='resize-handle' style={{ ...handleStyles, right: '-5px', cursor: 'ew-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+        
+                <div id='annotation-sw' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', left: '-5px', cursor: 'nesw-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+                <div id='annotation-s' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', cursor: 'ns-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+                <div id='annotation-se' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', right: '-5px', cursor: 'nwse-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+              </>
+            )
+            : null
+        }
+      </div>
       {
-        !hideHandles && !isLineType
+        !hideHandles && isLineType
           ? (
             <>
-              <div id='annotation-nw' className='resize-handle' style={{ ...handleStyles, top: '-5px', left: '-5px', cursor: 'nwse-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-              <div id='annotation-n' className='resize-handle' style={{ ...handleStyles, top: '-5px', cursor: 'ns-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-              <div id='annotation-ne' className='resize-handle' style={{ ...handleStyles, top: '-5px', right: '-5px', cursor: 'nesw-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-        
-              <div id='annotation-w' className='resize-handle' style={{ ...handleStyles, left: '-5px', cursor: 'ew-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-              <div id='annotation-e' className='resize-handle' style={{ ...handleStyles, right: '-5px', cursor: 'ew-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-        
-              <div id='annotation-sw' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', left: '-5px', cursor: 'nesw-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-              <div id='annotation-s' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', cursor: 'ns-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
-              <div id='annotation-se' className='resize-handle' style={{ ...handleStyles, bottom: '-5px', right: '-5px', cursor: 'nwse-resize' }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} />
+              <div
+                id={'annotation-x1-y1'}
+                className='resize-handle'
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                style={{
+                  ...handleStyles,
+                  top: activePath.pageY1 - 6,
+                  left: activePath.pageX1 - 6,
+                  cursor: 'move',
+                  position: 'fixed'
+                }}
+              />
+              <div
+                id={'annotation-x2-y2'}
+                className='resize-handle'
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                style={{
+                  ...handleStyles,
+                  top: activePath.pageY2 - 6,
+                  left: activePath.pageX2 - 6,
+                  cursor: 'move',
+                  position: 'fixed'
+                }}
+              />
             </>
           )
           : null
       }
-    </div>
-          {
-            !hideHandles && isLineType
-              ? (
-                <>
-                  <div
-                    id={'annotation-x1-y1'}
-                    className='resize-handle'
-                    onMouseDown={handleMouseDown}
-                    onMouseUp={handleMouseUp}
-                    style={{
-                      ...handleStyles,
-                      top: activePath.pageY1 - 6,
-                      left: activePath.pageX1 - 6,
-                      cursor: 'move',
-                      position: 'fixed'
-                    }}
-                  />
-                  <div
-                    id={'annotation-x2-y2'}
-                    className='resize-handle'
-                    onMouseDown={handleMouseDown}
-                    onMouseUp={handleMouseUp}
-                    style={{
-                      ...handleStyles,
-                      top: activePath.pageY2 - 6,
-                      left: activePath.pageX2 - 6,
-                      cursor: 'move',
-                      position: 'fixed'
-                    }}
-                  />
-                </>
-              )
-              : null
-          }
-        </>
+    </>
   )
 }
 

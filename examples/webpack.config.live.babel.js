@@ -32,13 +32,15 @@ export default () => ({
     hot: true,
     // enable HMR on the server
 
-    contentBase: path.resolve(__dirname, 'dist'),
-    // match the output path
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      // match the output path
+    },
 
-    publicPath: '/',
-    // match the output `publicPath`
-
-    stats: 'minimal'
+    devMiddleware: {
+      publicPath: '/'
+      // match the output `publicPath`
+    },
   },
 
   module: {
@@ -54,20 +56,13 @@ export default () => ({
             }
           }
         ]
-      },
-      {
-        test: /\.(scss)$/,
-        loader: 'style-loader!css-loader!sass-loader'
       }
     ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx']
   },
 
   plugins: [new webpack.HotModuleReplacementPlugin()],
-  optimization: {
-    namedModules: true
-  }
 });

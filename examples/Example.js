@@ -2,8 +2,8 @@ import React from 'react';
 
 import ImgMarkup from '../src/index';
 
-
-const src = "https://i.imgur.com/rbXZcVH.jpeg"
+// will generate random image
+const src = "https://source.unsplash.com/random/400x400?sig=incrementingIdentifier"
 
 class Example extends React.Component {
   constructor(props) {
