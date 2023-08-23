@@ -26,7 +26,7 @@ const RenderPropExample = () => {
 
   return (
     <div style={CONTAINER_STYLES}>
-      <ImgMarkupRenderProp imgSrc={src} imgStyles={{ height: 500 }} onSave={(uri) => console.log({ uri })} defaultValues={markupDefaultValues}>
+      <ImgMarkupRenderProp imgSrc={src} imgStyles={{ height: 400 }} onSave={(uri) => console.log({ uri })} defaultValues={markupDefaultValues}>
         {({
           activeColor,
           activeStrokeWidth,

@@ -7,12 +7,17 @@ const PATTERN_OPTIONS = {
   RENDER_PROPS: 'render-props',
 }
 
+const GLOBAL_STYLES = {
+  fontFamily: 'Arial',
+  margin: '40px 60px'
+}
+
 function Example() {
   const [enabledRenderProp, setEnabledRenderProp] = useState(PATTERN_OPTIONS.HOOK)
 
   return (
-    <div>
-      <label htmlFor="method">Method:</label>
+    <div style={GLOBAL_STYLES}>
+      <label htmlFor="method">Active Pattern:</label>
       <select name='method' value={enabledRenderProp} onChange={(e) => setEnabledRenderProp(e.target.value)}>
         <option value={PATTERN_OPTIONS.HOOK}>hook</option>
         <option value={PATTERN_OPTIONS.RENDER_PROPS}>render props</option>
