@@ -23,6 +23,6 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "no-console": 1,
     "semi": [2, "never"],
-    "react/no-unknown-property": 0,
+    "react/no-unknown-property": 0
   }
 }
