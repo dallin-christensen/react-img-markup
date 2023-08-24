@@ -3,13 +3,21 @@ import { svgAsPngUri } from 'save-svg-as-png'
 import { v1 } from 'uuid'
 import useSvgMousePosition from './useSvgMousePosition'
 
+const DEFAULT_ARGS = {
+  onSave: () => {},
+  onImgLoad: () => {},
+  defaultValues: {},
+  encoderType: "jpg",
+  encoderOptions: 0.8,
+}
+
 const useImgMarkup = ({
-  onSave = () => {},
-  onImgLoad = () => {},
-  defaultValues = {},
-  encoderType = "jpg",
-  encoderOptions = 0.8,
-}) => {
+  onSave = DEFAULT_ARGS.onSave,
+  onImgLoad = DEFAULT_ARGS.onImgLoad,
+  defaultValues = DEFAULT_ARGS.defaultValues,
+  encoderType = DEFAULT_ARGS.encoderType,
+  encoderOptions = DEFAULT_ARGS.encoderOptions,
+} = DEFAULT_ARGS) => {
   const svgRef = useRef()
   const imgRef = useRef()
   const imgMarkupModifiers = useRef()
@@ -61,7 +69,7 @@ const useImgMarkup = ({
           pageX2: pageX,
           pageY2: pageY,
           id,
-          textContent: defaultValues?.text || 'default text',
+          textContent: defaultValues?.text || '',
           fontSize: activeFontSize,
         }
       })
