@@ -4,6 +4,7 @@ React pattern based library for creating markup on images.
 
 ![Alt Text](./img-markup.gif)
 
+<br></br>
 ## Installation & Usage
 
 Install package:
@@ -16,11 +17,13 @@ or
 yarn add react-img-markup
 ```
 <br></br>
-*Note: `react-img-markup` supports a hooks API and a render-props model API. Scroll futher down the page if you're looking for the render-props documentation.
 
 ### Hook API
+>*Note: `react-img-markup` supports a hooks API and a render-props model API. Scroll futher down the page if you're looking for the render-props documentation.
+
 New to react-img-markup version 2, hooks api allow for a more easily controllable pattern that does not rely on component nesting.
 
+<br></br>
 Import `useImgMarkup` hook and `ImgMarkupCanvas` component from library:
 
 ```
