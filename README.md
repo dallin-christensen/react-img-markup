@@ -16,10 +16,8 @@ or
 yarn add react-img-markup
 ```
 <br></br>
-<br></br>
 *Note: `react-img-markup` supports a hooks API and a render-props model API. Scroll futher down the page if you're looking for the render-props documentation.
 
-<br></br>
 ### Hook API
 New to react-img-markup version 2, hooks api allow for a more easily controllable pattern that does not rely on component nesting.
 
@@ -80,7 +78,6 @@ You can now use these destructured properties from `useImgMarkup` to control ima
 That's the basics! I will give a full and detailed list of the rest of the features react-img-markup supports below. More in-depth examples will be provided in this project's repository.
 
 <br></br>
-<br></br>
 #### `useImgMarkup` hook arguments
 - `onSave` (func, optional) - callback invoked when image is saved. Will pass the uri as parameter: `(uri) => {}`.
 - `onImgLoad` (func, optional) - callback invoked when image has loaded: `() => {}`.
@@ -93,7 +90,6 @@ That's the basics! I will give a full and detailed list of the rest of the featu
   - `fontSize` (number) - value for markup font size. Accepts any numerical value. Default: `20`
   - `text` (string) - value for default text shown to user when text element is first created. Default: `""`
 
-<br></br>
 <br></br>
 #### `useImgMarkup` hook return values
 - `activeType` (string) - state. The active markup type. Returned values can be: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
@@ -111,14 +107,11 @@ That's the basics! I will give a full and detailed list of the rest of the featu
 - `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
 
 <br></br>
-<br></br>
 #### `ImgMarkupCanvas` props
 - `imgSrc` (string, required) - the src of the image you would like to add markup to.
 - `imgStyles` (obj, optional) - styles passed to the image element.
 
 
-<br></br>
-<br></br>
 <br></br>
 ### Render-props API
 This pattern replicates the original render-props API structure of `react-img-markup` v1. If you're looking to upgrade to v2 and want to make as few changes as possible, this is the way.
@@ -152,7 +145,6 @@ By passing a function as a child of `ImgMarkupRenderProp`, you get access to pro
 ```
 
 <br></br>
-<br></br>
 #### `ImgMarkupRenderProp` props
 
 - `imgSrc` (string, required) - the src of the image you would like to add markup to.
@@ -168,7 +160,6 @@ By passing a function as a child of `ImgMarkupRenderProp`, you get access to pro
   - `fontSize` (number) - value for markup font size. Accepts any numerical value. Default: `20`
   - `text` (string) - value for default text shown to user when text element is first created. Default: `""`
 
-<br></br>
 <br></br>
 #### `ImgMarkupRenderProp` render prop parameter values
 
@@ -187,8 +178,6 @@ By passing a function as a child of `ImgMarkupRenderProp`, you get access to pro
 - `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
 
 <br></br>
-<br></br>
-<br></br>
 #### Contributions appreciated!
 
 ```
@@ -196,6 +185,4 @@ git clone
 npm i --legacy-peer-deps
 npm run start
 ```
-
-<br></br>
 This library was built using [react-npm-package-boilerplate](https://github.com/flexdinesh/react-npm-package-boilerplate) as a boilerplate.
