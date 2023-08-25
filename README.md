@@ -47,7 +47,7 @@ Now pass the image src directly to `ImgMarkupCanvas` via `imgSrc` prop.
 <ImgMarkupCanvas imgSrc={src} {...bind} />
 ```
 &#13;&nbsp;
-Voila! Your image markup should now work with the default settings, though there is a lot more you can customize! Next we will show how the `useImgMarkup` hook will allow us to use state values and setters to set different configurations for annotation. In the case of this example, changing the active color.
+Voila! Your image markup should now work with the default settings, though there is a lot more you can customize! Next we will show how the `useImgMarkup` hook allows us to use state values and setters to set different configurations for annotation- in this example, changing the active color.
 
 &#13;&nbsp;
 Destructure `activeColor` and `setActiveColor` from the `useImgMarkup` hook.
@@ -95,15 +95,15 @@ That's the basics! I will give a full and detailed list of the rest of the featu
 
 &#13;&nbsp;
 &#13;&nbsp;
-#### `useImgMarkup` destructured hook values
+#### `useImgMarkup` hook return values
 - `activeType` (string) - state. The active markup type. Returned values can be: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
 - `activeColor` (string) - state. The markup active color state.
 - `activeStrokeWidth` (number) - state. The markup active stroke width.
 - `activeFontSize` (number) - state. The markup active stroke font size.
-- `setActiveType` (func) - sets state. will set the `activeType` state. State settable options are: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
-- `setActiveColor` (func) - sets state. Will set `activeColor` state. Accepts string values.
-- `setActiveStrokeWidth` (func) - sets state. Will set `activeStrokeWidth` state. Accepts number values.
-- `setActiveFontSize` (func) - sets state. Will set `activeFontSize` state. Accepts number values.
+- `setActiveType` (func) - sets the `activeType` state. State settable options are: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
+- `setActiveColor` (func) - sets the `activeColor` state. Accepts string values.
+- `setActiveStrokeWidth` (func) - sets the `activeStrokeWidth` state. Accepts number values.
+- `setActiveFontSize` (func) - sets the `activeFontSize` state. Accepts number values.
 - `undo` (func) - will undo the last markup element the user created.
 - `deletePath` (func) - pass a path id to delete desired path: `deletePath(id)`.
 - `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called. Will also return uri if asynchronously await the call.
@@ -176,10 +176,10 @@ By passing a function as a child of `ImgMarkupRenderProp`, you get access to pro
 - `activeColor` (string) - state. The markup active color state.
 - `activeStrokeWidth` (number) - state. The markup active stroke width.
 - `activeFontSize` (number) - state. The markup active stroke font size.
-- `setActiveType` (func) - sets state. will set the `activeType` state. State settable options are: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
-- `setActiveColor` (func) - sets state. Will set `activeColor` state. Accepts string values.
-- `setActiveStrokeWidth` (func) - sets state. Will set `activeStrokeWidth` state. Accepts number values.
-- `setActiveFontSize` (func) - sets state. Will set `activeFontSize` state. Accepts number values.
+- `setActiveType` (func) - sets the `activeType` state. State settable options are: `"rect"`, `"ellipsis"`, `"line"`, `"arrow"`, and `"text"`.
+- `setActiveColor` (func) - sets the `activeColor` state. Accepts string values.
+- `setActiveStrokeWidth` (func) - sets the `activeStrokeWidth` state. Accepts number values.
+- `setActiveFontSize` (func) - sets the `activeFontSize` state. Accepts number values.
 - `undo` (func) - will undo the last markup element the user created.
 - `deletePath` (func) - pass a path id to delete desired path: `deletePath(id)`.
 - `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called. Will also return uri if asynchronously await the call.
