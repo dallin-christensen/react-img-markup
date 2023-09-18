@@ -529,7 +529,8 @@ const useImgMarkup = ({
     save,
     deletePath,
     activePathId,
-    imgMarkupModifiers
+    imgMarkupModifiers,
+    paths
   }
 }
 

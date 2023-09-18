@@ -29,7 +29,8 @@ const ImgMarkupRenderProp = ({
     save,
     deletePath,
     activePathId,
-    imgMarkupModifiers
+    imgMarkupModifiers,
+    paths
   } = useImgMarkup({
     onSave,
     onImgLoad,
@@ -56,6 +57,7 @@ const ImgMarkupRenderProp = ({
           deletePath,
           activePathId,
           imgMarkupModifiers,
+          paths
         })
       }
     </>
