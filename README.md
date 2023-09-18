@@ -108,6 +108,7 @@ That's the basics! I will give a full and detailed list of the rest of the featu
 - `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called. Will also return uri if asynchronously await the call.
 - `activePathId` (string) - state. The id of `activePath`. Will be assigned `null` if no paths are active.
 - `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
+- `paths` (obj) - state. Exposing the exact path data to the user.
 
 <br></br>
 #### `ImgMarkupCanvas` props
@@ -179,6 +180,7 @@ By passing a function as a child of `ImgMarkupRenderProp`, you get access to pro
 - `save` (func) - saves the image with the markup. Will pass the uri to `onSave` when this function is called. Will also return uri if asynchronously await the call.
 - `activePathId` (string) - state. The id of `activePath`. Will be assigned `null`` if no paths are active.
 - `imgMarkupModifiers` (obj) - react `ref`. Assign this `ref` to an element that wraps your modification elements to not lose the selected state when changing shape/text settings.
+- `paths` (obj) - state. Exposing the exact path data to the user.
 
 <br></br>
 #### Contributions appreciated!
